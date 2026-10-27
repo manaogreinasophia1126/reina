@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Class Chat Online</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Screen 1: Sign up or log in -->
+    <main id="auth-screen" class="chat auth">
+
+        <h1>Class Chat</h1>
+        <p class="subtitle">Log in to join the conversation.</p>
+
+        <form id="auth-form">
+
+            <label for="display-name">
+                Display name (sign up only)
+            </label>
+
+            <input
+                id="display-name"
+                type="text"
+                maxlength="24"
+                placeholder="Your name or nickname"
+                autocomplete="nickname"
+            >
+
+            <label for="email">Email</label>
+
+            <input
+                id="email"
+                type="email"
+                required
+                placeholder="you@school.com"
+                autocomplete="email"
+            >
+
+            <label for="password">
+                Password (at least 8 characters)
+            </label>
+
+            <input
+                id="password"
+                type="password"
+                minlength="8"
+                required
+                autocomplete="current-password"
+            >
+
+            <div class="auth-buttons">
+                <button type="submit" id="login-btn">
+                    Log in
+                </button>
+
+                <button
+                    type="button"
+                    id="signup-btn"
+                    class="ghost"
+                >
+                    Sign up
+                </button>
+            </div>
+
+        </form>
+
+        <p
+            id="auth-message"
+            class="auth-message"
+            role="status"
+            aria-live="polite"
+        ></p>
+
+    </main>
+
+    <!-- Screen 2: Chat -->
+    <main id="chat-screen" class="chat" hidden>
+
+        <!-- Chat header -->
+        <header class="chat-header">
+
+            <h1>Class Chat</h1>
+
+            <div class="controls">
+                <span id="who">Signed in</span>
+
+                <button
+                    id="logout-btn"
+                    type="button"
+                    class="ghost"
+                >
+                    Log out
+                </button>
+            </div>
+
+        </header>
+
+        <!-- Online users panel -->
+        <section
+            class="online-panel"
+            aria-label="Online users"
+        >
+
+            <div class="online-heading">
+                <span
+                    class="online-dot"
+                    aria-hidden="true"
+                ></span>
+
+                <strong>Online now</strong>
+
+                <span
+                    id="online-count"
+                    aria-label="Number of online users"
+                >0</span>
+            </div>
+
+            <ul id="online-users" aria-live="polite"></ul>
+
+        </section>
+
+        <!-- Messages -->
+        <ul
+            id="messages"
+            class="messages"
+            aria-live="polite"
+            aria-label="Chat messages"
+        ></ul>
+
+        <!-- Message input -->
+        <form
+            id="message-form"
+            class="composer"
+            autocomplete="off"
+        >
+
+            <label
+                for="message-input"
+                class="visually-hidden"
+            >
+                Message
+            </label>
+
+            <input
+                id="message-input"
+                type="text"
+                maxlength="500"
+                required
+                placeholder="Type a message or /weather Manila"
+                autocomplete="off"
+            >
+
+            <button type="submit">Send</button>
+
+        </form>
+
+    </main>
+
+    <!-- Supabase client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.1"></script>
+
+    <!-- Your chat application -->
+    <script src="script.js"></script>
+
+</body>
+</html>
